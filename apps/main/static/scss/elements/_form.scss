@@ -1,0 +1,11 @@
+form {
+  &.is-submitting {
+    .fa-spinner {
+      display: inline;
+    }
+  }
+
+  .fa-spinner {
+    display: none;
+  }
+}

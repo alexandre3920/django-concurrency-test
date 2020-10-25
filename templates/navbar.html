@@ -1,0 +1,31 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{% url 'main:index' %}" title="Accueil">
+    Home
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse text-right" id="navbar">
+    <ul class="navbar-nav mr-2 mr-lg-auto">
+    </ul>
+    <span class="navbar-text mt-3 mt-lg-0">
+      <ul class="navbar-nav mr-auto">
+        <li>
+          <ul class="d-block d-lg-inline-flex m-0 p-0 list-unstyled">
+            <li class="nav-item dropdown">
+              <button class="btn btn-outline-danger mx-2 my-1 dropdown-toggle" id="navbar_dropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Créer un compte
+              </button>
+              <div class="dropdown-menu" aria-labelledby="navbar_dropdown4">
+                <a class="dropdown-item text-dark" href="{% url 'main:patient_signup' %}">Patient</a>
+              </div>
+            </li>
+          </ul>
+          <a href="{% url 'login'%}"><button type="button" class="btn btn-outline-primary mx-2 my-1" title="Me connecter">Me connecter</button></a>
+        </li>
+      </ul>
+    </span>
+  </div>
+</nav>

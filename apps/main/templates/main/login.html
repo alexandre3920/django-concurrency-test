@@ -1,0 +1,70 @@
+{% extends "account.html" %}
+
+{% block title %}Me connecter | {{ block.super }}{% endblock title %}
+
+{% block content %}
+<section class="login">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6 col-lg-5">
+        <div class="login-bloc">
+          <div class="login-bloc-messages">
+            {% if form.errors %}
+            <div class="login-bloc-message">
+              <div class="alert alert-danger" role="alert">
+                <span>Impossible de vous authentifier. Veuillez réessayer</span>
+              </div>
+            </div>
+            {% else %}
+            {% if next %}
+            {% if user.is_authenticated %}
+            <div class="login-bloc-message">
+              <div class="alert alert-danger" role="alert">
+                <span>Vous n'avez pas accès à cette page. Merci de vous connecter avec un autre compte.</span>
+              </div>
+            </div>
+            {% else %}
+            <div class="login-bloc-message">
+              <div class="alert alert-warning" role="alert">
+                <span>Veuillez vous connecter pour accéder à cette page.</span>
+              </div>
+            </div>
+            {% endif %}
+            {% endif %}
+            {% endif %}
+          </div>
+          <div class="login-bloc-form">
+            <form method="post" action="{% url 'login' %}">
+              {% csrf_token %}
+              <div class="row my-4">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="id_{{ form.username.name }}">Adresse mail</label>
+                    <input autofocus autocomplete="username" class="form-control" type="email" inputmode="email" name="{{ form.username.name }}" id="id_{{ form.username.name }}" maxlength="{{ form.username.field.max_length }}" placeholder="{{ form.username.field.help_text }}" {% if form.username.data %}value="{{ form.username.data }}"{% endif %} required>
+                  </div>
+                  <div class="form-group">
+                    <label for="id_{{ form.password.name }}">Mot de passe</label>
+                    <input autocomplete="current-password" class="form-control" type="password" name="{{ form.password.name }}" id="id_{{ form.password.name }}" placeholder="{{ form.password.field.help_text }}" required>
+                  </div>
+                  <input type="hidden" name="next" value="{{ next }}" />
+                </div>
+              </div>
+              <div class="row my-4">
+                <div class="col-12 my-2">
+                  <button type="submit" class="btn btn-primary btn-block" title="Connexion">Connexion <i class="fas fa-spinner rotate"></i></button>
+                </div>
+                <div class="col-12 my-2">
+                  <a class="btn btn-secondary btn-block" href="{% url 'main:index' %}" title="Retour accueil">Retour</a>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="login-bloc-footer">
+            <p><a href="{% url 'password_reset' %}" title="Mot de passe oublié">Mot de passe oublié ?</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

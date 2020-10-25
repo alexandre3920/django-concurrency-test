@@ -1,0 +1,45 @@
+# Mac temporary image folder
+*.DS_Store
+
+# Python compile files
+*.pyc
+
+#Intellij folder
+*.idea
+
+#SQlite
+*.db
+
+#Compass
+.sass-cache/
+
+#NodeJS
+node_modules
+npm-debug.log
+package-lock.json
+
+#Bower
+bower_components
+
+# Django internationalization files
+*.mo
+
+# Django media
+media/
+
+# Celery beat
+celerybeat*
+
+# Sublime text project, cache
+*.cache
+*.sublime-project
+*.sublime-workspace
+
+# Coverage file
+.coverage
+
+# Exports
+exports/
+
+# Visual Studio Code
+.vscode

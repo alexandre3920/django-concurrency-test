@@ -1,0 +1,161 @@
+{% extends "default.html" %}
+{% load static %}
+
+{% block title %}Créer un compte | {{ block.super }}{% endblock title %}
+
+{% block content %}
+<section class="py-3 py-md-4 py-lg-5">
+  <div class="container">
+    <div class="row my-4">
+      <div class="col">
+        <h1>Créer mon compte patient</h1>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <h3>Informations principales</h3>
+      </div>
+      <div class="col-12 col-md-12 col-lg-12">
+        <div class="signup-bloc">
+          <div class="signup-bloc-messages">
+          <div class="signup-form">
+            <form action="" method="post">
+              {% csrf_token %}
+              <div class="row justify-content-left">
+                <div class="col-12 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label for="id_{{ form.first_name.name }}">Votre prénom{% if form.fields.first_name.required %} <span class="text-danger font-weight-bold" title="Réponse obligatoire">*</span>{% endif %}</label>
+                    <input autofocus class="form-control {% if form.first_name.errors %}is-invalid{% endif %}" type="text" name="{{ form.first_name.name }}" id="id_{{ form.first_name.name }}" maxlength="{{ form.first_name.field.max_length }}" placeholder="Prénom" {% if form.first_name.data %}value="{{ form.first_name.data }}"{% endif %} {% if form.fields.first_name.required %}required{% endif %}>
+                    {% if form.first_name.errors %}
+                    <div class="invalid-feedback">
+                      <span>{{ form.first_name.errors.as_text|cut:"*" }}</span>
+                    </div>
+                    {% endif %}
+                    {% if form.first_name.help_text %}
+                    <small id="{{ form.first_name.name }}_help" class="form-text text-muted">{{ form.first_name.help_text|safe }}</small>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label for="id_{{ form.last_name.name }}">Votre nom{% if form.fields.last_name.required %} <span class="text-danger font-weight-bold" title="Réponse obligatoire">*</span>{% endif %}</label>
+                    <input class="form-control {% if form.last_name.errors %}is-invalid{% endif %}" type="text" name="{{ form.last_name.name }}" id="id_{{ form.last_name.name }}" maxlength="{{ form.last_name.field.max_length }}" placeholder="Nom" {% if form.last_name.data %}value="{{ form.last_name.data }}"{% endif %} {% if form.fields.last_name.required %}required{% endif %}>
+                    {% if form.last_name.errors %}
+                    <div class="invalid-feedback">
+                      <span>{{ form.last_name.errors.as_text|cut:"*" }}</span>
+                    </div>
+                    {% endif %}
+                    {% if form.last_name.help_text %}
+                    <small id="{{ form.last_name.name }}_help" class="form-text text-muted">{{ form.last_name.help_text|safe }}</small>
+                    {% endif %}
+                  </div>
+                </div>
+                {% if form.patient_age %}
+                <div class="col-12 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label for="id_{{ form.patient_age.name }}">Votre âge{% if form.fields.patient_age.required %} <span class="text-danger font-weight-bold" title="Réponse obligatoire">*</span>{% endif %}</label>
+                    <input class="form-control {% if form.patient_age.errors %}is-invalid{% endif %}" type="text" name="{{ form.patient_age.name }}" id="id_{{ form.patient_age.name }}" maxlength="{{ form.patient_age.field.max_length }}" placeholder="Age du patient" {% if form.patient_age.data %}value="{{ form.patient_age.data }}"{% endif %} {% if form.fields.patient_age.required %}required{% endif %}>
+                    {% if form.patient_age.errors %}
+                    <div class="invalid-feedback">
+                      <span>{{ form.patient_age.errors.as_text|cut:"*" }}</span>
+                    </div>
+                    {% endif %}
+                    {% if form.patient_age.help_text %}
+                    <small id="{{ form.patient_age.name }}_help" class="form-text text-muted">{{ form.patient_age.help_text|safe }}</small>
+                    {% endif %}
+                  </div>
+                </div>
+                {% endif %}
+              </div>
+              <div class="row justify-content-left">
+                <div class="col-12 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label for="id_{{ form.email.name }}">Votre email{% if form.fields.email.required %} <span class="text-danger font-weight-bold" title="Réponse obligatoire">*</span>{% endif %}</label>
+                    <input class="form-control {% if form.email.errors %}is-invalid{% endif %}" type="email" name="{{ form.email.name }}" id="id_{{ form.email.name }}" maxlength="{{ form.email.field.max_length }}" placeholder="Adresse électronique" {% if form.email.data %}value="{{ form.email.data }}"{% endif %} {% if form.fields.email.required %}required{% endif %}>
+                    {% if form.email.errors %}
+                    <div class="invalid-feedback">
+                      <span>{{ form.email.errors.as_text|cut:"*" }}</span>
+                    </div>
+                    {% endif %}
+                    {% if form.email.help_text %}
+                    <small id="{{ form.email.name }}_help" class="form-text text-muted">{{ form.email.help_text|safe }}</small>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-content-center my-4">
+                <div class="col-12">
+                  <h3>Informations d'authentification</h3>
+                </div>
+                <div class="col-12 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label for="id_{{ form.password1.name }}">Votre mot de passe{% if form.fields.password1.required %} <span class="text-danger font-weight-bold" title="Réponse obligatoire">*</span>{% endif %}</label>
+                    <input autocomplete="new-password" class="form-control {% if form.password1.errors %}is-invalid{% endif %}" type="password" name="{{ form.password1.name }}" id="id_{{ form.password1.name }}" maxlength="{{ form.password1.field.max_length }}" placeholder="Mot de passe" {% if form.fields.password1.required %}required{% endif %}>
+                    {% if form.password1.errors %}
+                    <div class="invalid-feedback">
+                      <span>{{ form.password1.errors.as_text|cut:"*" }}</span>
+                    </div>
+                    {% endif %}
+                    {% if form.password1.help_text %}
+                    <small id="{{ form.password1.name }}_help" class="form-text text-muted">{{ form.password1.help_text|safe }}</small>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-6">
+                  <div class="form-group">
+                    <label for="id_{{ form.password2.name }}">Confirmer le mot de passe{% if form.fields.password2.required %} <span class="text-danger font-weight-bold" title="Réponse obligatoire">*</span>{% endif %}</label>
+                    <input autocomplete="new-password" class="form-control {% if form.password2.errors %}is-invalid{% endif %}" type="password" name="{{ form.password2.name }}" id="id_{{ form.password2.name }}" maxlength="{{ form.password2.field.max_length }}" placeholder="Confirmer le mot de passe" {% if form.fields.password2.required %}required{% endif %}>
+                    {% if form.password2.errors %}
+                    <div class="invalid-feedback">
+                      <span>{{ form.password2.errors.as_text|cut:"*" }}</span>
+                    </div>
+                    {% endif %}
+                    {% if form.password2.help_text %}
+                    <small id="{{ form.password2.name }}_help" class="form-text text-muted">{{ form.password2.help_text|safe }}</small>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-content-center my-4">
+                <div class="col-12 col-md-6 col-ld-6">
+                  <div class="row">
+                    {% if form.guc_agreement %}
+                    <div class="col-12">
+                      <div class="form-group">
+                        <div class="form-check">
+                          <input class="form-check-input {% if form.guc_agreement.errors %}is-invalid{% endif %}" type="checkbox" name="{{ form.guc_agreement.name }}" id="id_{{ form.guc_agreement.name }}" {% if form.fields.guc_agreement.required %}required{% endif %} title="Veuillez cocher cette case">
+                          <label class="form-check-label" for="id_{{ form.guc_agreement.name }}">
+                            J'atteste avoir lu et adhérer aux <a target="_blank" href="#" class="font-weight-bold">Conditions Générales d'Utilisation</a> du site.{% if form.fields.guc_agreement.required %} <span class="text-danger font-weight-bold" title="Réponse obligatoire">*</span>{% endif %}
+                          </label>
+                          {% if form.guc_agreement.errors %}
+                          <div class="invalid-feedback">
+                            <span>{{ form.guc_agreement.errors.as_text|cut:"*" }}</span>
+                          </div>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-content-center my-4">
+                <div class="col-12 col-md-6 col-ld-6">
+                  <div class="row">
+                    <div class="col-12 my-2">
+                      <button type="submit" class="btn btn-success btn-block" title="Créer mon compte">Créer mon compte <i class="fas fa-spinner rotate"></i></button>
+                    </div>
+                    <div class="col-12 my-2">
+                      <a class="btn btn-secondary btn-block" href="{% url 'main:index' %}" title="Retour accueil">Retour</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

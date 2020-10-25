@@ -1,0 +1,30 @@
+{% extends "account.html" %}
+
+{% block title %}Création de mon compte | {{ block.super }}{% endblock title %}
+
+{% block content %}
+<section class="login">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6 col-lg-5">
+        <div class="password-reset-bloc">
+          <div class="password-reset-bloc-messages">
+            <div class="password-reset-bloc-message">
+              <div class="alert alert-success text-justify" role="alert">
+                <span>Votre compte a bien été créé. Vous allez recevoir un email (à l'adresse fournie) pour activer votre compte.</span>
+                <span class="font-weight-bold">Vous pourrez vous connecter uniquement après activation de votre compte.</span>
+              </div>
+              <div class="alert alert-warning text-justify" role="alert">
+                <span><i class="fas fa-info-circle"></i> Si vous ne l'avez pas encore reçu, patientez quelques instants puis regardez dans votre dossier des courriers indésirables.</span>
+              </div>
+            </div>
+          </div>
+          <div class="password-reset-bloc-buttons">
+            <a class="btn btn-success btn-block" href="{% url 'main:index' %}" title="Retour accueil">Retour accueil</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

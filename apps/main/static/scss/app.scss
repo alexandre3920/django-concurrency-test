@@ -1,0 +1,24 @@
+// Your variable overrides
+$body-color: #333;
+$body-bg: #ced4da;
+$font-family-sans-serif: 'Open Sans', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$theme-colors: (
+  orange: #e67e22,
+  yellow: #f6b93b,
+  gray: #6c757d,
+);
+// import bootstrap framework
+@import "bootstrap";
+
+// Util & extras
+@import "utils/units";
+@import "utils/animations";
+
+$transition-duration : 0.3s;
+
+// Elements
+@import "elements/form";
+
+// Sections
+@import "sections/container";
+@import "sections/login";
