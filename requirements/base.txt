@@ -1,4 +1,4 @@
-Django==3.2.18
+Django==3.2.19
 bcrypt==3.2.0
 python-dateutil==2.8.1
 pycryptodome==3.9.8
